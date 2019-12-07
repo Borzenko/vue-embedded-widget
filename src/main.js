@@ -18,4 +18,4 @@ Vue.config.productionTip = false
 // }).$mount('#app')
 
 // use vue-custom-element
-Vue.customElement('widgetplaceholder', App)
+Vue.customElement('vue-widget-placeholder', App)
