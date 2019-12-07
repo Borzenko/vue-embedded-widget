@@ -1,42 +1,43 @@
 <template>
-  <div id="app">
-    <!-- access root props via $root -->
-    <h1 style="text-align: center" v-if="$root.title">{{ $root.title }}</h1>
-
-    <at-menu mode="horizontal" :active-name="activeTab" @on-select="switchTab">
-      <at-menu-item name="list">
-        <i class="icon icon-list"></i>
-        List
-      </at-menu-item>
-      <at-menu-item name="edit">
-        <i class="icon icon-plus-square"></i>
-        Add new
-      </at-menu-item>
-    </at-menu>
-    <br>
-    <router-view />
+  <div>
+    <div>
+      <input type="date" v-model="date">
+      <button @click="addNewRecord">Add to cart</button>
+    </div>
+    <div v-for="item in items" :key="item.id">
+      {{ item.date }} {{ item.location }}
+    </div>
   </div>
 </template>
 
 <script>
+import uuid from 'uuid/v4'
+
 export default {
-  props: ['title'],
   data () {
     return {
-      activeTab: ''
+      items: [],
+      date: null
     }
   },
-  created () {
-    this.activeTab = this.$route.name
+  mounted () {
+    const isExist = localStorage.getItem('embeddedWidgetCart')
+    if (isExist) {
+      this.items = JSON.parse(isExist)
+    }
   },
   methods: {
-    switchTab (tab) {
-      this.$router.push({ name: tab })
-    }
-  },
-  watch: {
-    '$route.name' () {
-      this.activeTab = this.$route.name
+    addNewRecord () {
+      if (!this.date) return false
+      this.items.push({
+        id: uuid(),
+        date: this.date,
+        location: window.location.href
+      })
+      this.recordToLocalStorage()
+    },
+    recordToLocalStorage () {
+      localStorage.setItem('embeddedWidgetCart', JSON.stringify(this.items))
     }
   }
 }
