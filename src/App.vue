@@ -1,19 +1,24 @@
 <template>
   <div>
-    <div>
-      <input type="date" v-model="date">
-      <button @click="addNewRecord">Add to cart</button>
+    <div class="datepicker-wrapper">
+      <datepicker :input-class="'datepicker-input'" v-model="date" />
+      <button class="add-to-cart-btn" @click="addNewRecord">Add to cart</button>
     </div>
-    <div v-for="item in items" :key="item.id">
-      {{ item.date }} {{ item.location }}
+    <div class="date-table">
+      <div v-for="item in items" :key="item.id">{{ item.date }} {{ item.location }}</div>
     </div>
   </div>
 </template>
 
 <script>
 import uuid from 'uuid/v4'
+import moment from 'moment'
+import Datepicker from 'vuejs-datepicker'
 
 export default {
+  components: {
+    Datepicker
+  },
   data () {
     return {
       items: [],
@@ -31,7 +36,7 @@ export default {
       if (!this.date) return false
       this.items.push({
         id: uuid(),
-        date: this.date,
+        date: moment(this.date).format('YYYY MM DD'),
         location: window.location.href
       })
       this.recordToLocalStorage()
@@ -42,3 +47,35 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .datepicker-wrapper {
+    display: flex;
+    margin-bottom: 15px;
+  }
+  .add-to-cart-btn {
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+  .date-table div {
+    margin-bottom: 5px;
+  }
+</style>
+
+<style>
+  .datepicker-input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  .datepicker-input:focus {
+    outline: none
+  }
+</style>

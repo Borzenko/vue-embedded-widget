@@ -10,12 +10,12 @@
   "dependencies": {
     "document-register-element": "^1.11.0",
     "lodash": "^4.17.13",
-    "moment": "^2.22.2",
+    "uuid": "^3.3.3",
     "vue": "^2.5.16",
     "vue-custom-element": "^3.2.2",
     "vue-router": "^3.0.1",
+    "vuejs-datepicker": "^1.6.2",
     "vuex": "^3.0.1",
-    "uuid": "^3.3.3",
     "webpack": "^4.16.1"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "@vue/cli-plugin-eslint": "^3.4.1",
     "@vue/cli-service": "^3.5.3",
     "@vue/eslint-config-standard": "^3.0.0-rc.5",
+    "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.0.3",
     "vue-template-compiler": "^2.5.16"
