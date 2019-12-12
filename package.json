@@ -19,8 +19,8 @@
     "webpack": "^4.16.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.1",
-    "@vue/cli-plugin-eslint": "^3.4.1",
+    "@vue/cli-plugin-babel": "^3.9.2",
+    "@vue/cli-plugin-eslint": "^3.9.2",
     "@vue/cli-service": "^3.5.3",
     "@vue/eslint-config-standard": "^3.0.0-rc.5",
     "moment": "^2.24.0",
