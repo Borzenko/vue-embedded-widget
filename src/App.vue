@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="datepicker-wrapper">
-      <datepicker :input-class="'datepicker-input'" v-model="date" />
+      <datepicker :input-class="'vdp-datepicker-custom-input'" v-model="date" />
       <button class="add-to-cart-btn" @click="addNewRecord">Add to cart</button>
     </div>
     <div class="date-table">
@@ -66,7 +66,7 @@ export default {
 </style>
 
 <style>
-  .datepicker-input {
+  .vdp-datepicker-custom-input {
     padding: 5px 10px;
     border-radius: 5px;
     box-shadow: none;
@@ -75,7 +75,7 @@ export default {
     margin-right: 5px;
   }
 
-  .datepicker-input:focus {
+  .vdp-datepicker-custom-input:focus {
     outline: none
   }
 </style>
