@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="datepicker-wrapper">
-      <datepicker :input-class="'vdp-datepicker-custom-input'" v-model="date" />
-      <button class="add-to-cart-btn" @click="addNewRecord">Add to cart</button>
+    <div :class="$style['datepicker-wrapper']">
+      <datepicker :input-class="$style['vdp-datepicker-custom-input']" v-model="date" />
+      <button :class="$style['add-to-cart-btn']" @click="addNewRecord">Add to cart</button>
     </div>
-    <div class="date-table">
+    <div :class="$style['data-table']">
       <div v-for="item in items" :key="item.id">{{ item.date }} {{ item.location }}</div>
     </div>
   </div>
@@ -48,11 +48,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style module>
   .datepicker-wrapper {
     display: flex;
     margin-bottom: 15px;
   }
+
   .add-to-cart-btn {
     font-size: 14px;
     background: #fff;
@@ -60,12 +61,11 @@ export default {
     border-radius: 5px;
     padding: 5px 10px;
   }
+
   .date-table div {
     margin-bottom: 5px;
   }
-</style>
 
-<style>
   .vdp-datepicker-custom-input {
     padding: 5px 10px;
     border-radius: 5px;
